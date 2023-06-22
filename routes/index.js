@@ -19,7 +19,9 @@ router.get('/', async (req, res, next) => {
       where: { createdBy: parseInt(req.user.id) },
       orderBy: { updatedAt: 'desc' }
     });
+    console.log(schedules)
     schedules.forEach((schedule) => {
+      console.log(schedule)
       schedule.formattedUpdatedAt = dayjs(schedule.updatedAt).tz().format('YYYY/MM/DD HH:mm');
     });
     res.render('index', {
